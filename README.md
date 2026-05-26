@@ -2,14 +2,14 @@
 - Container orchestration managed by AWS
 - Cluster → Nodes → Pods (wrappers around containers) and services
 - Contains a master controller node and worker nodes
-- For EKS, kubernetes manages worker nodes only, the master controller node is managed by AWS
-- The controller node is the hub that manages the cluster and contains the API server, etcd (datastore) and kube-scheduler used by EKS
+- Kubernetes (EKS) manages worker nodes only, the master controller node is managed by AWS
+- The controller node is the hub that manages the cluster and contains the API server, etcd (datastore) and kube-scheduler used by kubernetes
 - Persistent state of objects via the primary datastore etcd (distributed key-value store, stores and replicates all kubernettes cluster states)
 - The controller manager is a daemon that embeds controllers inside the master node:
-  - replication
-  - endpoints
-  - namespace
-  - serviceaccounts
+  - `replication`
+  - `endpoints`
+  - `namespace`
+  - `serviceaccounts`
 - The worker nodes talk to the master controller node through the API server → etcd → scheduler → kubelet → containerd (externally via kubectl to kubelet)
 - kubelet runs containers on all nodes, defined by YAML called a pod manifest (read-only on port 10255), endpoints to curl: 
   - `/health`
